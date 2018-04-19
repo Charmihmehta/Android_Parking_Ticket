@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+//Test commit by Ravneet
 public class ContactActivity extends AppCompatActivity {
 
     FragmentManager fragmentManager;
