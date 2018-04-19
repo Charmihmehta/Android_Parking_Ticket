@@ -11,6 +11,11 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.charmimehta.parkingsystem.databases.AppDatabase;
+import com.example.charmimehta.parkingsystem.databases.TicketDeo;
+import com.example.charmimehta.parkingsystem.databases.UserDao;
+import com.example.charmimehta.parkingsystem.modal.User;
+
 public class LoginActivity extends AppCompatActivity {
 
     EditText txtUserName;
@@ -52,13 +57,16 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                User u1 ;
                 if (TextUtils.isEmpty(txtUserName.getText()) || txtUserName.getText().toString().length() == 0) {
                     txtUserName.setError("Please enter user name");
                 } else if (TextUtils.isEmpty(txtPsw.getText()) || txtPsw.getText().toString().length() == 0) {
                     txtPsw.setError("Please enter password");
                 } else {
-
-                     if (txtUserName.getText().toString().equals("admin@gmail.com") && txtPsw.getText().toString().equals("admin")) {
+                    UserDao messageDao = (UserDao) AppDatabase.getInstance(getApplicationContext()).userDao();
+                     u1=messageDao.getSingleRecord(txtUserName.getText().toString(),txtPsw.getText().toString());
+                     if (u1!=null) {
 
                         Toast.makeText(LoginActivity.this, "User Successfully logged in ", Toast.LENGTH_LONG).show();
                         if (chxRemember.isChecked()) {

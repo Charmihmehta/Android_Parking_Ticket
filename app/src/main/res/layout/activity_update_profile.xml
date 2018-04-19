@@ -11,30 +11,30 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Update Profile"
+        android:hint="Update Profile"
         android:textAllCaps="true"
         android:textStyle="bold|italic"
         android:textAlignment="center"
-        android:textColor="?attr/colorError"
+
         android:textSize="30sp" />
 
     <EditText
         android:id="@+id/edUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="UserName"
+        android:hint="UserName"
         android:textSize="18sp"
         android:textStyle="italic"
         android:layout_marginTop="16dp"
-        android:textColor="@android:color/white" />
+       />
 
     <EditText
         android:id="@+id/edEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Email"
-        android:textColor="@android:color/white"
+        android:hint="Email"
+
         android:textSize="18sp"
         />
 
@@ -43,8 +43,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Password"
-        android:textColor="@android:color/white"
+        android:hint="Password"
+
         android:textSize="18sp"
         android:textStyle="italic"
         />
@@ -54,8 +54,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Car Plate Number"
-        android:textColor="@android:color/white"
+        android:hint="Car Plate Number"
+
         android:textSize="18sp"
         android:textStyle="italic"
         />
@@ -65,8 +65,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Contact Number"
-        android:textColor="@android:color/white"
+        android:hint="Contact Number"
+
         android:textSize="18sp"
         android:textStyle="italic"
         />

@@ -12,16 +12,24 @@ import java.util.List;
 
 
 @Dao
-    public interface UserDao {
+public interface UserDao {
 
-        @Query("Select * from User")
-        public LiveData<List<User>> getUser();
+    @Query("Select * from User")
+    public LiveData<List<User>> getUser();
 
-        @Delete()
-        public void deleteUser(User user);
+    @Delete()
+    public void deleteUser(User user);
 
 
-        @Insert()
-        public void insertUser(User user);
-    }
+    @Insert()
+    public void insertUser(User user);
+
+    @Query("SELECT * FROM User WHERE email =:email_id AND password =:pwd")
+    User getSingleRecord(String email_id, String pwd);
+
+    @Query("UPDATE User SET  WHERE  em=:email")
+    User updateRecord(String email_id, String pwd);
+
+
+}
 

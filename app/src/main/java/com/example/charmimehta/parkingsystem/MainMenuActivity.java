@@ -73,7 +73,7 @@ public class MainMenuActivity extends AppCompatActivity
         messageDao.getAllTicket().observe(this, (List<Ticket> ticket) -> {
             ticketAdapter = new TicketAdapter(MainMenuActivity.this,ticket);
             int h = ticketAdapter.getItemCount();
-            txtCountTotal.setText(h);
+           // txtCountTotal.setText(h);
 
 
         });

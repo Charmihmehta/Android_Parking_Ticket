@@ -1,11 +1,17 @@
 package com.example.charmimehta.parkingsystem;
 
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.charmimehta.parkingsystem.databases.AppDatabase;
+import com.example.charmimehta.parkingsystem.databases.UserDao;
+import com.example.charmimehta.parkingsystem.modal.User;
 
 public class UpdateProfileActivity extends AppCompatActivity {
 
@@ -40,12 +46,25 @@ public class UpdateProfileActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
-                    username.setEnabled(true);
-                    email.setEnabled(true);
-                    password.setEnabled(true);
-                    conatct.setEnabled(true);
-                    carplate.setEnabled(true);
-                    Toast.makeText(UpdateProfileActivity.this, " EditText Enable Programmatically ", Toast.LENGTH_LONG).show();
+
+                    User user = new User();
+                    user.setUsername(username.getText().toString());
+                    user.setEmail(email.getText().toString());
+                    user.setCarPlateNo(carplate.getText().toString());
+                    user.setPassword(password.getText().toString());
+                    user.setContact(conatct.getText().toString());
+
+                    //add new message to database
+                    UserDao userDao = (UserDao) AppDatabase.getInstance(UpdateProfileActivity.this).userDao();
+                    userDao.updateRecord(user);
+                    if(userDao!=null)
+                    {
+                        Toast.makeText(UpdateProfileActivity.this, " not updated "+ user, Toast.LENGTH_LONG).show();
+                    }
+                    else
+                    {
+                        Toast.makeText(UpdateProfileActivity.this, " not updated ", Toast.LENGTH_LONG).show();
+                    }
 
                 }
             });
