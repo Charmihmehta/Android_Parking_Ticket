@@ -14,7 +14,9 @@ import com.example.charmimehta.parkingsystem.modal.Ticket;
 
 import java.util.List;
 
-
+/*
+Test commit
+ */
 public class TicketAdapter extends RecyclerView.Adapter<TicketViewHolder>
 {
     private List<Ticket> ticketList;
