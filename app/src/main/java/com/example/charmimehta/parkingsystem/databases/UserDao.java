@@ -5,6 +5,7 @@ import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
+import android.arch.persistence.room.Update;
 
 import com.example.charmimehta.parkingsystem.modal.User;
 
@@ -27,8 +28,9 @@ public interface UserDao {
     @Query("SELECT * FROM User WHERE email =:email_id AND password =:pwd")
     User getSingleRecord(String email_id, String pwd);
 
-    @Query("UPDATE User SET  WHERE  em=:email")
-    User updateRecord(String email_id, String pwd);
+
+
+
 
 
 }

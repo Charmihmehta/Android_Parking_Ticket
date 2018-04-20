@@ -6,17 +6,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="20dp"
     tools:context=".UpdateProfileActivity">
 
-    <EditText
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Update Profile"
+        android:text="Update profile"
         android:textAllCaps="true"
-        android:textStyle="bold|italic"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
         android:textAlignment="center"
 
         android:textSize="30sp" />
+    <EditText
+        android:id="@+id/edEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Email"
+
+        android:textSize="18sp"
+        />
 
     <EditText
         android:id="@+id/edUsername"
@@ -28,15 +39,7 @@
         android:layout_marginTop="16dp"
        />
 
-    <EditText
-        android:id="@+id/edEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Email"
 
-        android:textSize="18sp"
-        />
 
     <EditText
         android:id="@+id/edPassword"
@@ -74,21 +77,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="100dp">
+        android:gravity="center_horizontal|center_vertical"
+        >
 
         <Button
             android:id="@+id/btnEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="Edit" />
 
-        <Button
-            android:id="@+id/btnUpdate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Save"
-            android:layout_marginTop="24dp" />
+
+            android:text="Save" />
+
+
 
 
     </LinearLayout>

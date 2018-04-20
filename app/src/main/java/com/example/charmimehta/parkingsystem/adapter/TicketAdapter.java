@@ -16,6 +16,7 @@ import java.util.List;
 
 /*
 Test commit
+
  */
 public class TicketAdapter extends RecyclerView.Adapter<TicketViewHolder>
 {

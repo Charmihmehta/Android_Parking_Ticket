@@ -1,6 +1,7 @@
 package com.example.charmimehta.parkingsystem;
 
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,19 +27,28 @@ public class UpdateProfileActivity extends AppCompatActivity {
 
         EditText carplate;
         Button btnEdit;
-        Button btnSave;
+
+        SharedPreferences sharedPreferences;
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_update_profile);
 
             btnEdit = (Button) findViewById(R.id.btnEdit);
-            btnSave = (Button) findViewById(R.id.btnUpdate);
+
             username  = (EditText) findViewById(R.id.edUsername);
             email  = (EditText) findViewById(R.id.edEmail);
             password  = (EditText) findViewById(R.id.edPassword);
             conatct  = (EditText) findViewById(R.id.edContact);
             carplate  = (EditText) findViewById(R.id.edCarPlate);
+            sharedPreferences = getSharedPreferences("userDetails",MODE_PRIVATE);
+
+            String email1 = sharedPreferences.getString("userEmail",null);
+            String psw = sharedPreferences.getString("userPsw",null);
+
+            email.setText(email1);
+            email.setEnabled(false);
+
 
 
 
@@ -47,16 +57,18 @@ public class UpdateProfileActivity extends AppCompatActivity {
                 public void onClick(View v) {
 
 
+
+
                     User user = new User();
                     user.setUsername(username.getText().toString());
-                    user.setEmail(email.getText().toString());
+                    user.setEmail(email1);
                     user.setCarPlateNo(carplate.getText().toString());
-                    user.setPassword(password.getText().toString());
+                    user.setPassword(psw);
                     user.setContact(conatct.getText().toString());
 
                     //add new message to database
                     UserDao userDao = (UserDao) AppDatabase.getInstance(UpdateProfileActivity.this).userDao();
-                    userDao.updateRecord(user);
+                    userDao.getSingleRecord(email1,psw);
                     if(userDao!=null)
                     {
                         Toast.makeText(UpdateProfileActivity.this, " not updated "+ user, Toast.LENGTH_LONG).show();
@@ -69,19 +81,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
                 }
             });
 
-            btnSave.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
 
-                    username.setEnabled(false);
-                    email.setEnabled(false);
-                    password.setEnabled(false);
-                    conatct.setEnabled(false);
-                    carplate.setEnabled(false);
-                    Toast.makeText(UpdateProfileActivity.this, " EditText Enable Programmatically ", Toast.LENGTH_LONG).show();
-
-                }
-            });
 
 
 

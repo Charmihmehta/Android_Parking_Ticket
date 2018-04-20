@@ -1,6 +1,9 @@
 package com.example.charmimehta.parkingsystem;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -47,7 +50,22 @@ public class SignUpActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               createUser();
+                if(password.getText().toString().equals(repassword.getText().toString())) {
+                    createUser();
+                }
+                else
+                {
+                    AlertDialog alertDialog = new AlertDialog.Builder(SignUpActivity.this).create();
+                    alertDialog.setTitle("Error");
+                    alertDialog.setMessage("Password Mis-Match");
+                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                    alertDialog.show();
+                }
 
             }
         });
@@ -69,7 +87,8 @@ public class SignUpActivity extends AppCompatActivity {
         userDao.insertUser(user);
 
         if(user != null) {
-            Toast.makeText(this, "value" + user, Toast.LENGTH_LONG).show();
+            Intent i = new Intent(SignUpActivity.this,LoginActivity.class);
+            startActivity(i);
         }
         else
         {

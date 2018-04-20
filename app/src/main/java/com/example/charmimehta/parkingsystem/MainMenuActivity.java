@@ -73,6 +73,7 @@ public class MainMenuActivity extends AppCompatActivity
         messageDao.getAllTicket().observe(this, (List<Ticket> ticket) -> {
             ticketAdapter = new TicketAdapter(MainMenuActivity.this,ticket);
             int h = ticketAdapter.getItemCount();
+            Toast.makeText(MainMenuActivity.this, " value "+ h, Toast.LENGTH_LONG).show();
            // txtCountTotal.setText(h);
 
 
@@ -81,8 +82,7 @@ public class MainMenuActivity extends AppCompatActivity
         sharedPreferences = getSharedPreferences("userDetails",MODE_PRIVATE);
 
         String email = sharedPreferences.getString("userEmail",null);
-        //if(email != null)
-           // txtLoginEmail.setText(email);
+        Toast.makeText(MainMenuActivity.this, " value "+ email, Toast.LENGTH_LONG).show();
 
 
 

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/mnuStart"
+        android:title="Start"
+        android:showAsAction="ifRoom"
+        android:icon="@mipmap/ic_launcher_round"/>
+    <item
+        android:id="@+id/mnuStop"
+        android:showAsAction="ifRoom"
+        android:title="Stop"
+        android:icon="@mipmap/ic_launcher"/>
+    <item
+        android:id="@+id/mnuResume"
+        android:showAsAction="ifRoom"
+        android:title="Resume"/>
+    <item
+        android:id="@+id/mnuExit"
+        android:showAsAction="ifRoom"
+        android:title="Exit"/>
+    <item
+        android:id="@+id/mnuBack"
+        android:showAsAction="ifRoom"
+        android:title="Back"/>
+</menu>
