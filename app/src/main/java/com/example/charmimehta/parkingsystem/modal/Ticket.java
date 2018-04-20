@@ -9,6 +9,9 @@ public class Ticket {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
+    @ColumnInfo(name = "email")
+    private String email;
+
     @ColumnInfo(name = "carPlateNo")
     private String carPlateNo;
 
@@ -59,6 +62,14 @@ public class Ticket {
         this.cost = cost;
         this.time = time;
         this.cardType = cardType;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public int getId() {

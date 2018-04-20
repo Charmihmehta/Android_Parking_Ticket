@@ -13,8 +13,8 @@ import java.util.List;
 @Dao
 public interface TicketDeo {
 
-    @Query("Select * from Ticket")
-    public LiveData<List<Ticket>> getAllTicket();
+    @Query("Select * from Ticket WHERE email LIKE :email")
+    public LiveData<List<Ticket>> getAllTicket(String email);
 
     @Delete()
     public void deleteTicket(Ticket ticket);
@@ -25,5 +25,7 @@ public interface TicketDeo {
 
     @Query("SELECT * FROM Ticket WHERE id LIKE :first")
     Ticket findByid(int first);
+
+
 
 }

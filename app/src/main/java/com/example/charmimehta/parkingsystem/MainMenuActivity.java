@@ -69,19 +69,21 @@ public class MainMenuActivity extends AppCompatActivity
         txtLoginNm=(TextView) findViewById(R.id.txtLoginName);
         txtLoginEmail=(TextView)findViewById(R.id.txtLoginId);
         txtCountTotal=(TextView)findViewById(R.id.txtCount);
+        sharedPreferences = getSharedPreferences("userDetails",MODE_PRIVATE);
+
+        String email = sharedPreferences.getString("userEmail",null);
+
         TicketDeo messageDao = (TicketDeo) AppDatabase.getInstance(getApplicationContext()).ticketDeo();
-        messageDao.getAllTicket().observe(this, (List<Ticket> ticket) -> {
+        messageDao.getAllTicket(email).observe(this, (List<Ticket> ticket) -> {
             ticketAdapter = new TicketAdapter(MainMenuActivity.this,ticket);
             int h = ticketAdapter.getItemCount();
             Toast.makeText(MainMenuActivity.this, " value "+ h, Toast.LENGTH_LONG).show();
-           // txtCountTotal.setText(h);
+            //txtCountTotal.setText(h);
 
 
         });
 
-        sharedPreferences = getSharedPreferences("userDetails",MODE_PRIVATE);
 
-        String email = sharedPreferences.getString("userEmail",null);
         Toast.makeText(MainMenuActivity.this, " value "+ email, Toast.LENGTH_LONG).show();
 
 

@@ -1,6 +1,7 @@
 package com.example.charmimehta.parkingsystem;
 
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -59,7 +60,7 @@ public class TicketActivity extends AppCompatActivity {
     EditText etCarNumber;
     @BindView(R.id.rg1)
     RadioGroup rg1;
-
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -149,7 +150,12 @@ public class TicketActivity extends AppCompatActivity {
     public void getTe()
     {
 
+        sharedPreferences = getSharedPreferences("userDetails",MODE_PRIVATE);
+
+        String email1 = sharedPreferences.getString("userEmail",null);
+
         Ticket ticket = new Ticket();
+        ticket.setEmail(email1);
         ticket.setTime(etdate.getText().toString());
         ticket.setCost(etCost.getText().toString());
         ticket.setCarPlateNo(etCarNumber.getText().toString());
