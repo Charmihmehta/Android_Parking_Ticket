@@ -29,8 +29,20 @@ public interface UserDao {
     User getSingleRecord(String email_id, String pwd);
 
 
+    // @Query("UPDATE User SET password =:psw, contact =:cont, carPlateNo =:car  WHERE  email =:email  ")
+    //public User updateRecord(String psw, String cont, String car, String email);
 
+    @Query("SELECT id FROM User WHERE email =:email")
+    int getUserId(String email);
 
+    @Update
+    public void updateUser(User user);
+
+    @Query("SELECT * FROM User WHERE id =:id")
+    User getUser(int id);
+
+    @Query("SELECT * FROM User WHERE email =:email_id")
+    User userExist(String email_id);
 
 
 }

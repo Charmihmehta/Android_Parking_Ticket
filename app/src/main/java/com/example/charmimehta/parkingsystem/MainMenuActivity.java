@@ -6,18 +6,17 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AlertDialog;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.webkit.WebView;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -62,12 +61,15 @@ public class MainMenuActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        View headerView = navigationView.getHeaderView(0);
+
+
 
 
         //Shared preferenece in nav_header
 
         txtLoginNm=(TextView) findViewById(R.id.txtLoginName);
-        txtLoginEmail=(TextView)findViewById(R.id.txtLoginId);
+        txtLoginEmail=(TextView)headerView.findViewById(R.id.txtLoginId);
         txtCountTotal=(TextView)findViewById(R.id.txtCount);
         sharedPreferences = getSharedPreferences("userDetails",MODE_PRIVATE);
 
@@ -77,14 +79,15 @@ public class MainMenuActivity extends AppCompatActivity
         messageDao.getAllTicket(email).observe(this, (List<Ticket> ticket) -> {
             ticketAdapter = new TicketAdapter(MainMenuActivity.this,ticket);
             int h = ticketAdapter.getItemCount();
-            Toast.makeText(MainMenuActivity.this, " value "+ h, Toast.LENGTH_LONG).show();
-            //txtCountTotal.setText(h);
+            //Toast.makeText(MainMenuActivity.this, " value "+ h, Toast.LENGTH_LONG).show();
+            txtCountTotal.setText(String.valueOf(h));
 
 
         });
 
 
-        Toast.makeText(MainMenuActivity.this, " value "+ email, Toast.LENGTH_LONG).show();
+        //Toast.makeText(MainMenuActivity.this, " value "+ email, Toast.LENGTH_LONG).show();
+        txtLoginEmail.setText(String.valueOf(email));
 
 
 

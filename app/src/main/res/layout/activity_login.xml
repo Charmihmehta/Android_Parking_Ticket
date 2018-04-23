@@ -47,7 +47,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="140dp"
                     android:background="?attr/colorBackgroundFloating"
-                    android:text="Create new account ..."
+                    android:text="Don't have account? Create new !!!"
                     android:textColor="@color/colorPrimary" />
             </LinearLayout>
         </LinearLayout>
