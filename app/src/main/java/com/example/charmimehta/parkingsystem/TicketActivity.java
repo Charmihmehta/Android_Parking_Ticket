@@ -140,7 +140,7 @@ public class TicketActivity extends AppCompatActivity {
     public void getCurrentdateAndTime() {
         long date = System.currentTimeMillis();
 
-        SimpleDateFormat sdf = new SimpleDateFormat("MMM MM dd, yyyy h:mm a");
+        SimpleDateFormat sdf = new SimpleDateFormat("MM dd, yyyy h:mm a");
         String dateString = sdf.format(date);
         etdate.setText(dateString);
 
@@ -165,17 +165,12 @@ public class TicketActivity extends AppCompatActivity {
         ticket.setZone((String) spinnerZone.getItemAtPosition(spinnerZone.getSelectedItemPosition()));
         ticket.setCardType((String) spinnerCard.getItemAtPosition(spinnerCard.getSelectedItemPosition()));
         //add new message to database
+
+
         TicketDeo ticketDeo = (TicketDeo) AppDatabase.getInstance(TicketActivity.this).ticketDeo();
         ticketDeo.insertNewTicket(ticket);
 
-        if(ticket != null) {
-            Toast.makeText(this, "value" + ticket, Toast.LENGTH_LONG).show();
-        }
-        else
-        {
 
-
-        }
     }
 
 }

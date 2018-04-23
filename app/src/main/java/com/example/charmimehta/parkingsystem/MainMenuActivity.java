@@ -184,8 +184,29 @@ public class MainMenuActivity extends AppCompatActivity
 
 
         }else if (id == R.id.logout) {
-            Intent i = new Intent(MainMenuActivity.this,LoginActivity.class);
-            startActivity(i);
+
+            DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    switch (which){
+                        case DialogInterface.BUTTON_POSITIVE:
+                            //Yes button clicked
+                            Intent i = new Intent(MainMenuActivity.this,LoginActivity.class);
+                            startActivity(i);
+                            break;
+
+                        case DialogInterface.BUTTON_NEGATIVE:
+                            //No button clicked
+                            break;
+                    }
+                }
+            };
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("Are you sure want to LOGOUT?").setPositiveButton("Yes", dialogClickListener)
+                    .setNegativeButton("No", dialogClickListener).show();
+
+
 
         }
 

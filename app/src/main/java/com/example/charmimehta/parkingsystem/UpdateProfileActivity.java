@@ -60,7 +60,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
         //get id
         userId = userDao.getUserId(email1);
 
-        Toast.makeText(UpdateProfileActivity.this, "  updated " + userId, Toast.LENGTH_LONG).show();
+        //Toast.makeText(UpdateProfileActivity.this, "  updated " + userId, Toast.LENGTH_LONG).show();
 
         //get user details
 
@@ -75,37 +75,15 @@ public class UpdateProfileActivity extends AppCompatActivity {
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        switch (which) {
-                            case DialogInterface.BUTTON_POSITIVE:
-
-                               userUpdate();
-                                break;
-
-
-                            case DialogInterface.BUTTON_NEGATIVE:
-                                //No button clicked
-                                break;
-                        }
-                    }
-                };
-
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
-                builder.setMessage("Are you sure you want to update profile?").setPositiveButton("Yes", dialogClickListener)
-                        .setNegativeButton("No", dialogClickListener).show();
-
-
-
+                userUpdate();
 
             }
         });
 
 
     }
+
+
 
     public  void userUpdate()
     {

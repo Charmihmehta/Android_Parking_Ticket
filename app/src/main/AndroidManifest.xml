@@ -38,8 +38,6 @@
             android:parentActivityName=".MainMenuActivity"/>
         <activity android:name=".ParkingLocationActivity"
             android:parentActivityName=".MainMenuActivity"/>
-        <activity android:name=".DisplayTicketActivity"
-            android:parentActivityName=".MainMenuActivity"/>
         <activity android:name=".InstructionActivity"
             android:parentActivityName=".MainMenuActivity"/>
         <activity android:name=".DisplayAllTicketsActivity"
